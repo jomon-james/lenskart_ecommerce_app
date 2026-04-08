@@ -4,7 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
-
+const HOST = "0.0.0.0";
 
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/productRoutes");
@@ -34,6 +34,6 @@ app.use("/api",productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders",orderRoutes);
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, HOST, () => {
   console.log(`Server running on port ${PORT}`);
 });
