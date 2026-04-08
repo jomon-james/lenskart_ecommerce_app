@@ -4,6 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
+
+
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -14,6 +16,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the E-commerce API");
+});
+
 app.use("/uploads", express.static("uploads"));
 
 mongoose.connect(process.env.MONGO_URI)
