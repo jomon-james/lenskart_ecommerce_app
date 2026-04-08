@@ -1,0 +1,70 @@
+.manage-users {
+    padding: 30px;
+   background-color: aliceblue; 
+   min-height: 100vh;
+}
+
+.manage-users h2 {
+   margin-bottom:20px;
+    font-size:28px;
+    font-weight:bold;
+    color: #2f3896
+}
+
+.users-table {
+   width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(232, 247, 255);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.users-table th {
+     background-color: #2f3896;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.users-table td   {
+    padding: 12px;
+    margin: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-btn2 {
+    padding: 8px 12px;
+    background-color: #cc3838;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 35%;
+}
+
+.delete-btn2:hover {
+    background-color: rgb(176, 25, 25);
+}
+
+.edit-btn2 {
+    padding: 8px 12px;
+    background-color: #455a98;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 35%;
+}
+
+.edit-btn2:hover {
+    background-color: #111185;
+}

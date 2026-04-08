@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial,sana-serif;
+}
+
+.top-bar {
+   background: #000;
+   color:white;
+   padding: 8px 20px;
+   font-size: 13px; 
+}
+
+.top-bar .right {
+    float: right;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    border-bottom: 1 px solid #ddd;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+
+
+.logo {
+    font-size: 22px;
+    font-weight:bold;
+}
+
+.phone img {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+}
+
+.search-box {
+    margin-left: 30px;
+}
+
+.search-box input {
+    width: 600px;
+    padding: 8px;
+    border: 1 px solid #ccc;
+    border-radius:4px;
+}
+
+.nav-links {
+    margin-left: auto;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    text-decoration:none;
+    color: black;
+    font-size:14px;
+}
+
+.icon {
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.menu {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd
+}
+
+.menu a {
+    margin-right: 20px;
+    text-decoration: none;
+    color:black;
+    font-size: 14px;
+    font-weight: semi-bold;
+
+}

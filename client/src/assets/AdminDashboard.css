@@ -1,0 +1,39 @@
+.admin-dashboard-container {
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+.admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ddd;
+}
+
+.admin-logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #262677;
+}
+
+.admin-nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.admin-nav-links span {
+    cursor: pointer;
+    font-size: 20px;
+    color: #262677;
+}
+
+.admin-nav-links span:hover {
+    color: #000042;
+}
+
+.logout {
+    color: #000042;
+}  

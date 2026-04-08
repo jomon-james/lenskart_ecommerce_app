@@ -1,0 +1,138 @@
+.product-details-container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 20px;
+}
+
+.product-left img {
+    width: 450px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.product-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.product-price {
+    font-size: 24px;
+    color:rgb(44, 72, 116);
+    font-weight: bold;
+}
+
+.product-category {
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
+
+.product-category span {
+    color: black;
+    font-weight: 500;
+}
+
+
+.product-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(0, 0, 0);
+
+}
+
+.add-cart-btn {
+    margin-top: 20px;
+    padding:14px;
+    background-color: rgb(12, 105, 186);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 200px;
+}
+
+.add-cart-btn:hover {
+    background-color: rgb(51, 44, 140);
+}
+
+@media (max-width:768px) {
+    .product-details-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-left img {
+        width: 100%;
+    }
+}
+
+.qty-wrapper {
+  margin: 20px 0;
+}
+
+.qty-label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.qty-box {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #c0c4d8;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.qty-btn:hover {
+  background: #8089cd;
+}
+
+.qty-box span {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.buy-now-btn {
+    margin-top: 20px;
+    padding:14px;
+    background-color: rgba(28, 150, 36, 0.752);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 200px;
+}
+
+.buy-now-btn:hover {
+    background-color: #00ff6a;
+}
