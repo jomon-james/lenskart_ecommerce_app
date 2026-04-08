@@ -34,6 +34,6 @@ app.use("/api",productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders",orderRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
