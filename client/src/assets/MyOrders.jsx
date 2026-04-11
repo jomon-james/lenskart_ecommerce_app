@@ -13,7 +13,7 @@ function MyOrders() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const res = await axios.get(
-      `http://localhost:5000/api/orders/user/${user.id}`
+      `https://lenskart-ecommerce-app.onrender.com/api/orders/user/${user.id}`
     );
 
     setOrders(res.data);

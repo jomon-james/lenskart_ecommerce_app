@@ -18,7 +18,7 @@ function EditProducts({ editProduct, setEditProduct, fetchProducts }) {
         try {
 
             await axios.put(
-                `http://localhost:5000/api/products/${editProduct._id}`,
+                `https://lenskart-ecommerce-app.onrender.com/api/products/${editProduct._id}`,
                 formData
             );
 
@@ -109,7 +109,7 @@ function EditProducts({ editProduct, setEditProduct, fetchProducts }) {
                             src={
                                 previewImage
                                     ? previewImage
-                                    : `http://localhost:5000/uploads/${editProduct.image}`
+                                    : `https://lenskart-ecommerce-app.onrender.com/uploads/${editProduct.image}`
                             }
                             alt="product"
                             style={{ width: "120px", marginBottom: "10px", borderRadius: "5px" }}

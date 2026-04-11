@@ -11,7 +11,7 @@ function EditUser({ user, onUpdate, onClose }) {
 
     const handleUpdate = async () => {
         try {
-            const res = await axios.put(`http://localhost:5000/api/users/update/${user._id}`,{ name, email });
+            const res = await axios.put(`https://lenskart-ecommerce-app.onrender.com/api/users/update/${user._id}`,{ name, email });
             onUpdate(res.data);
             onClose();
         }

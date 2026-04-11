@@ -18,7 +18,7 @@ function Cart() {
 
   const fetchCart = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+      const res = await axios.get(`https://lenskart-ecommerce-app.onrender.com/api/cart/${userId}`);
       setCart(res.data.items);
     } catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ function Cart() {
   
   const removeFromCart = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${userId}/${productId}`);
+      await axios.delete(`https://lenskart-ecommerce-app.onrender.com/api/cart/${userId}/${productId}`);
       fetchCart(); 
     } catch (error) {
       console.log(error);
@@ -43,7 +43,7 @@ function Cart() {
   const handleCheckout = async () => {
     try {
     const userId = localStorage.getItem("userId");
-    const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+    const res = await axios.get(`https://lenskart-ecommerce-app.onrender.com/api/cart/${userId}`);
     const cartItems = res.data.items;
 
     if (!cartItems || cartItems.length === 0) {
@@ -73,7 +73,7 @@ function Cart() {
         cart.map(item => (
           <div key={item.productId} className="cart-item">
             <img 
-              src={`http://localhost:5000/uploads/${item.image}`} 
+              src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} 
               alt={item.name}  
               width="100" 
             />

@@ -11,7 +11,7 @@ function AdminOrders() {
   }, []);
 
   const fetchOrders = async () => {
-    const res = await axios.get("http://localhost:5000/api/orders/all");
+    const res = await axios.get("https://lenskart-ecommerce-app.onrender.com/api/orders/all");
     setOrders(res.data);
 
    
@@ -35,7 +35,7 @@ function AdminOrders() {
     const status = statusMap[orderId];
 
     await axios.put(
-      `http://localhost:5000/api/orders/update-status/${orderId}`,
+      `https://lenskart-ecommerce-app.onrender.com/api/orders/update-status/${orderId}`,
       { status }
     );
 

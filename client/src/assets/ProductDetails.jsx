@@ -17,7 +17,7 @@ function ProductDetails() {
     useEffect(() => { if (id) fetchProduct(); }, [id]);
 
     const fetchProduct = async () => {
-        const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const res = await axios.get(`https://lenskart-ecommerce-app.onrender.com/api/products/${id}`);
         setProduct(res.data);
     };
 
@@ -25,7 +25,7 @@ function ProductDetails() {
 
     const handleAddToCart = async () => {
         try {
-            await axios.post("http://localhost:5000/api/cart/add", {
+            await axios.post("https://lenskart-ecommerce-app.onrender.com/api/cart/add", {
                 userId,
                 product,
                 qty
@@ -48,7 +48,7 @@ function ProductDetails() {
     return (
         <div className="product-details-container">
             <div className="product-left">
-                <img src={`http://localhost:5000/uploads/${product.image}`} />
+                <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${product.image}`} />
             </div>
             <div className="product-right">
                 <h2 className="product-title">{product.name}</h2>

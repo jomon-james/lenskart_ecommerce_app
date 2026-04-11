@@ -4,7 +4,7 @@ function DeleteUser({ userId, onDelete }){
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/users/delete/${userId}`);
+            await axios.delete(`https://lenskart-ecommerce-app.onrender.com/api/users/delete/${userId}`);
             onDelete(userId);
         }
         catch (error) {

@@ -9,7 +9,7 @@ function SunGlasses() {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/api/products?category=sunglasses")
+        axios.get("https://lenskart-ecommerce-app.onrender.com/api/products?category=sunglasses")
         .then((res) => setProducts(res.data))
         .catch((err) => console.log(err));
     },[]);
@@ -20,7 +20,7 @@ function SunGlasses() {
             {products.map((item) => (  
             <Link to={`/product/${item._id}`} key={item._id} className="product-link">
             <div className="product-card">
-                <img src={`http://localhost:5000/uploads/${item.image}`} alt={"item.name"} />
+                <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} alt={"item.name"} />
                 <h3>{item.name}</h3>
                 <p>{item.price}</p>
                 

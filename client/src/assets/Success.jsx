@@ -13,7 +13,7 @@ function Success() {
 
         if (!orderData) return;
         await axios.post(
-          "http://localhost:5000/api/orders/place-order",
+          "https://lenskart-ecommerce-app.onrender.com/api/orders/place-order",
           orderData
         );
         localStorage.removeItem("pendingOrder");

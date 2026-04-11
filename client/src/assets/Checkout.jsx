@@ -91,7 +91,7 @@ function Checkout() {
         if (paymentMethod === "cod") {
 
             await axios.post(
-            "http://localhost:5000/api/orders/place-order",
+            "https://lenskart-ecommerce-app.onrender.com/api/orders/place-order",
             orderData
         );
             alert("order placed successfully");
@@ -100,7 +100,7 @@ function Checkout() {
             const stripe = await loadStripe("pk_test_51THMTaJubzL9s4vqRhS7GY1y7VzPX0p7bmgZtnOZJaWxhiRiDOOgrSTK3Ek80MPqBMZJ4nzTla4DhF1O67VGnEPE00Q9CJm1Eq");
             localStorage.setItem("pendingOrder", JSON.stringify(orderData));
             
-            const response = await axios.post("http://localhost:5000/api/orders/create-checkout-session",
+            const response = await axios.post("https://lenskart-ecommerce-app.onrender.com/api/orders/create-checkout-session",
                 {
                     items: formattedItems
 
@@ -128,7 +128,7 @@ function Checkout() {
 
                 {product.map((item, index) => (
                 <div className="checkout-product" key={index}>
-                    <img src={`http://localhost:5000/uploads/${item.image}`} />
+                    <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} />
                     <div>
                         <h3>{item.name}</h3>
                         <p>{item.price}</p>

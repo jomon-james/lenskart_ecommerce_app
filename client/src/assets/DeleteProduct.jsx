@@ -7,7 +7,7 @@ function DeleteProduct({ productId, fetchProducts }) {
         try {
 
             await axios.delete(
-                `http://localhost:5000/api/products/delete/${productId}`
+                `https://lenskart-ecommerce-app.onrender.com/api/products/delete/${productId}`
             );
 
             alert("Product Deleted Successfully!");

@@ -15,7 +15,7 @@ function ManageProducts() {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/products/all");
+            const response = await axios.get("https://lenskart-ecommerce-app.onrender.com/api/products/all");
             setProducts(response.data);
         }
         catch (error){
@@ -55,7 +55,7 @@ function ManageProducts() {
 
                                     <td>
                                         <img
-                                            src={`http://localhost:5000/uploads/${product.image}`}
+                                            src={`https://lenskart-ecommerce-app.onrender.com/uploads/${product.image}`}
                                             alt={product.name}
                                             style={{ width: "100px" }}
                                         />

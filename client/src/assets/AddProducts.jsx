@@ -41,7 +41,7 @@ function AddProducts() {
     data.append("image", formData.image);
 
     try {
-      await axios.post("http://localhost:5000/api/products/add", data);
+      await axios.post("https://lenskart-ecommerce-app.onrender.com/api/products/add", data);
       alert("Product Added Successfully!");
     } catch (error) {
       console.log(error);

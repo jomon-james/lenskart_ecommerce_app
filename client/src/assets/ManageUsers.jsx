@@ -13,7 +13,7 @@ function ManageUsers() {
 
      const fetchUsers = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/users/getusers");
+            const res = await axios.get("https://lenskart-ecommerce-app.onrender.com/api/users/getusers");
             console.log(res.data);
             setUsers(res.data);
         }
