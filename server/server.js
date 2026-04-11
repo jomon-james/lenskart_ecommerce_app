@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.status(200).send("Welcome to the E-commerce API");
+  res.status(200).send("Welcome to the lenskart application - backend");
 });
 
 app.use("/uploads", express.static("uploads"));
