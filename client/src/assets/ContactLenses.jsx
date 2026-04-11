@@ -9,7 +9,7 @@ function ContactLenses() {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        axios.get("https://lenskart-ecommerce-app.onrender.com/products?category=contact-lenses")
+        axios.get("https://lenskart-ecommerce-app.onrender.com/api/products?category=contact-lenses")
         .then((res) => setProducts(res.data))
         .catch((err) => console.log(err));
     },[]);
