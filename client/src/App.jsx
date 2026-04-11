@@ -8,7 +8,7 @@ import NewArrivals from "./assets/NewArrivals";
 import SunGlasses from "./assets/SunGlasses";
 import EyeGlasses from "./assets/EyeGlasses";
 import ContactLenses from "./assets/ContactLenses";
-import Accessories from "./assets/accessories";
+import Accessories from "./assets/Accessories";
 import Store from "./assets/Store";
 import AdminLogin from "./assets/AdminLogin";
 import AdminDashboard from "./assets/AdminDashboard";
