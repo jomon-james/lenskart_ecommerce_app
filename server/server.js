@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+require("dns").setDefaultResultOrder("ipv4first");
 const PORT = process.env.PORT || 5000;
 
 const HOST = "0.0.0.0";
