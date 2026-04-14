@@ -15,7 +15,7 @@ const orderRoutes = require("./routes/orderRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "https://lenskart-ecommerce-app.onrender.com",
+  origin: "https://lenskart-ecommerce-app.vercel.app",
   credentials: true
 }));
 app.use(express.json());
@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
-
+app.use("/api",productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders",orderRoutes);
 
