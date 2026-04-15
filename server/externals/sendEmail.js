@@ -1,21 +1,24 @@
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 
 
-const resend = new Resend(process.env.resend_api_key);
 const sendEmail = async (to, subject, text) => {
 try {
-await resend.emails.send({
-  from: "onboarding@resend.dev",
-  to,
-  subject,
-  html:`
-    <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
-      <h4 style="color: #5774c3;">${subject}</h4>
-      <p>${text.replace(/\n/g, "<br>")}</p>
-      </div>`,
-  
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
+const mailOptions = {
+  from: process.env.Email,
+  to,
+  subject,
+  text,
+};
+
+await transporter.sendMail(mailOptions);
 console.log("email sent successfully");
 }
 
