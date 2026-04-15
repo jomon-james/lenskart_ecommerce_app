@@ -10,6 +10,7 @@ function Success() {
     const saveOrder = async () => {
       try {
         const orderData = JSON.parse(localStorage.getItem("pendingOrder"));
+        console.log("Saving order:", orderData);
 
         if (!orderData) return;
         await axios.post(
