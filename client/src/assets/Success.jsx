@@ -16,8 +16,9 @@ function Success() {
           alert("No pending order found");
           return;
         }
+        
 
-        setTimeout(async ())
+
         await axios.post(
           "https://lenskart-ecommerce-app.onrender.com/api/orders/place-order",
           orderData
@@ -32,8 +33,10 @@ function Success() {
         alert("Order saving failed");
       }
     };
-
-    saveOrder();
+      setTimeout(() => {
+            saveOrder();
+          }, 1000);
+          saveOrder();
   }, []);
 
   return (
