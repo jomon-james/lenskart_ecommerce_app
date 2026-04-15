@@ -9,7 +9,6 @@ import SunGlasses from "./assets/SunGlasses";
 import EyeGlasses from "./assets/EyeGlasses";
 import ContactLenses from "./assets/ContactLenses";
 import Accessories from "./assets/Accessories";
-import Store from "./assets/Store";
 import AdminLogin from "./assets/AdminLogin";
 import AdminDashboard from "./assets/AdminDashboard";
 import AddProducts from "./assets/AddProducts";
@@ -46,7 +45,6 @@ function App() {
         <Route path="/eyeglasses" element={<><Navbar /><EyeGlasses /></>} />
         <Route path="/contact-lenses" element={<><Navbar /><ContactLenses /></>} />
         <Route path="/accessories" element={<><Navbar /><Accessories /></>} />
-        <Route path="/store" element={<><Navbar /><Store /></>} />
         <Route path="/product/:id" element={<><ProductDetails /></>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
