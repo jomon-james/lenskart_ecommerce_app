@@ -10,9 +10,8 @@ await resend.emails.send({
   subject,
   html:`
     <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
-      <h2 style="color: #007BFF;">${subject}</h2>
+      <h4 style="color: #5774c3;">${subject}</h4>
       <p>${text.replace(/\n/g, "<br>")}</p>
-      <p style="margin-top: 20px;">Thank you for shopping with us!</p>
       </div>`,
   
 });
