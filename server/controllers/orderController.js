@@ -28,7 +28,7 @@ const placeOrder = async (req, res) => {
     const message =`Your order has been placed successfully!\nOrder ID: ${newOrder._id}\nItems:\n${itemsList}\n`
 
     await sendEmail(
-      user.email, 
+      "jomonjames118@gmail.com", 
       "Order Confirmation",
       message
     );
@@ -106,7 +106,7 @@ const updateOrderStatus = async (req, res) => {
       `;
       
       await sendEmail(
-        user.email,
+        "jomonjames118@gmail.com",
         "Order Status Update",
         `${message}`
       );
