@@ -95,10 +95,15 @@ function Checkout() {
             orderData
         );
             alert("order placed successfully");
+
+        localStorage.removeItem("buyNow");
+        localStorage.removeItem("checkoutItems");
+        localStorage.removeItem("checkoutSource");
+        localStorage.removeItem("cart");
+        
         } else {
             localStorage.setItem("pendingOrder", JSON.stringify(orderData));
             const stripe = await loadStripe("pk_test_51THMTaJubzL9s4vqRhS7GY1y7VzPX0p7bmgZtnOZJaWxhiRiDOOgrSTK3Ek80MPqBMZJ4nzTla4DhF1O67VGnEPE00Q9CJm1Eq");
-            localStorage.setItem("pendingOrder", JSON.stringify(orderData));
             
             const response = await axios.post("https://lenskart-ecommerce-app.onrender.com/api/orders/create-checkout-session",
                 {
@@ -109,11 +114,6 @@ function Checkout() {
             const session = response.data;
             window.location.href = session.url;
         }
-
-        localStorage.removeItem("buyNow");
-        localStorage.removeItem("checkoutItems");
-        localStorage.removeItem("checkoutSource");
-        localStorage.removeItem("cart");
 
     } catch (error) {
         console.error(error);
