@@ -41,7 +41,6 @@ function Navbar() {
         <Link to="/sunglasses">SUNGLASSES</Link>
         <Link to="/contact-lenses">CONTACTS</Link>
         <Link to="/accessories">ACCESSORIES</Link>
-        <Link to="/store">STORES</Link>
     </div>
         
      </>
