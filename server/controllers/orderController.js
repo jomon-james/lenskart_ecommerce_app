@@ -68,7 +68,7 @@ const createCheckoutSession =  async ( req, res) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: "https://lenskart-ecommerce-app.onrender.com/success",
+            success_url: "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app/success",
             cancel_url: "https://lenskart-ecommerce-app.onrender.com/cancel",
         });
 
