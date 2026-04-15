@@ -9,15 +9,21 @@ function Success() {
 
     const saveOrder = async () => {
       try {
-        const orderData = JSON.parse(localStorage.getItem("pendingOrder"));
+        const orderData = JSON.parse(localStorage.getItem("pendingOrder")) || JSON.parse(sessionStorage.getItem("pendingOrderBackup"));
         console.log("Saving order:", orderData);
 
-        if (!orderData) return;
+        if (!orderData) {
+          alert("No pending order found");
+          return;
+        }
+
+        setTimeout(async ())
         await axios.post(
           "https://lenskart-ecommerce-app.onrender.com/api/orders/place-order",
           orderData
         );
         localStorage.removeItem("pendingOrder");
+        sessionStorage.removeItem("pendingOrderBackup");
 
         alert("Payment successful & Order placed!");
 

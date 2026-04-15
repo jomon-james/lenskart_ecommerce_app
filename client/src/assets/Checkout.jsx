@@ -100,9 +100,12 @@ function Checkout() {
         localStorage.removeItem("checkoutItems");
         localStorage.removeItem("checkoutSource");
         localStorage.removeItem("cart");
-        
+
         } else {
             localStorage.setItem("pendingOrder", JSON.stringify(orderData));
+            sessionStorage.setItem("pendingOrderBackup",JSON.stringify(orderData));
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
             const stripe = await loadStripe("pk_test_51THMTaJubzL9s4vqRhS7GY1y7VzPX0p7bmgZtnOZJaWxhiRiDOOgrSTK3Ek80MPqBMZJ4nzTla4DhF1O67VGnEPE00Q9CJm1Eq");
             
             const response = await axios.post("https://lenskart-ecommerce-app.onrender.com/api/orders/create-checkout-session",
