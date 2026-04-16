@@ -1,45 +1,34 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function Success() {
-     const hasSaved = useRef(false);
+      const location = useLocation();
+     
     useEffect(() => {
-         if (hasSaved.current) return;
-         hasSaved.current = true;
-
+      
     const saveOrder = async () => {
       try {
-        const localData = localStorage.getItem("pendingOrder");
-        const sessionData = sessionStorage.getItem("pendingOrderBackup");
+        const params = new URLSearchParams(location.search);
+        const sessionId = params.get("session_id");
+        console.log("Session ID:", sessionId);
 
-        const orderData = localData ? JSON.parse(localData) : sessionData ? JSON.parse(sessionData) : null;
-        console.log("Saving order:", orderData);
-
-        if (!orderData) {
-          alert("No pending order found");
+        if (!sessionId) {
+          alert("No session ID found");
           return;
         }
-        
+        const res = await axios.post("https://lenskart-ecommerce-app.onrender.com/api/orders/confirm-order", { sessionId });
+        console.log("Order confirmation response:", res.data);
 
-
-        await axios.post(
-          "https://lenskart-ecommerce-app.onrender.com/api/orders/place-order",
-          orderData
-        );
-        localStorage.removeItem("pendingOrder");
-        sessionStorage.removeItem("pendingOrderBackup");
-
-        alert("Payment successful & Order placed!");
+       alert("Payment successful & Order placed!");
 
       } catch (error) {
         console.error(error);
         alert("Order saving failed");
       }
     };
-      setTimeout(() => {
-            saveOrder();
-          }, 1000);
-  }, []);
+    saveOrder();
+  }, [location]);
 
   return (
     <div style={{ padding: "60px", textAlign: "center",}}>

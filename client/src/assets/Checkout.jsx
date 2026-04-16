@@ -110,7 +110,8 @@ function Checkout() {
             
             const response = await axios.post("https://lenskart-ecommerce-app.onrender.com/api/orders/create-checkout-session",
                 {
-                    items: formattedItems
+                    items: formattedItems,
+                    orderData: orderData,
 
                 }
             );

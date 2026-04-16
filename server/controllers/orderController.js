@@ -52,7 +52,7 @@ const placeOrder = async (req, res) => {
 
 const createCheckoutSession =  async ( req, res) => {
     try {
-        const { items } = req.body;
+        const { items, orderData } = req.body;
         const lineItems = items.map(item => ({
             price_data: {
                 currency: "inr",
@@ -68,6 +68,10 @@ const createCheckoutSession =  async ( req, res) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
+            metadata: {
+                orderData: JSON.stringify(orderData)
+            
+            },
             success_url: "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app/success",
             cancel_url: "https://lenskart-ecommerce-app.onrender.com/cancel",
         });
@@ -139,10 +143,27 @@ const getUserOrders = async (req, res) => {
   }
 };
 
+const confirmOrder = async (req, res) => {
+  try {
+    const { sessionId } = req.body;
+    const session = await stripe.checkout.sessions.retrieve(sissionId);
+    const orderData = JSON.parse(session.metadata.orderData);
+    const newOrder = new Order(orderData);
+    await newOrder.save();
+
+    res.json({ message: "order saved successfully" });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error confirming order" });
+  }
+};
+
 module.exports = {
   placeOrder,
   updateOrderStatus,
   getAllOrders,
   getUserOrders,
   createCheckoutSession,
+  confirmOrder
 };
