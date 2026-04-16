@@ -28,7 +28,7 @@ const placeOrder = async (req, res) => {
     const message =`Your order has been placed successfully!\nOrder ID: ${newOrder._id}\nItems:\n${itemsList}\n`
 
     await sendEmail(
-      "jomonjames118@gmail.com", 
+      user.email, 
       "Order Confirmation",
       message
     );
@@ -156,8 +156,9 @@ const confirmOrder = async (req, res) => {
     const message =`Your order has been placed successfully!\nOrder ID: ${newOrder._id}\nItems:\n${itemsList}\n Total Amount: ${newOrder.totalAmount}\n
     Thank you for shopping with lenskart!`;
 
+    const user = await User.findById(newOrder.userId);
     await sendEmail(
-      "jomonjames118@gmail.com",
+      user.email,
       "Order Confirmation",
       message
     );
