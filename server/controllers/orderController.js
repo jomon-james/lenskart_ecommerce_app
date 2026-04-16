@@ -69,7 +69,7 @@ const createCheckoutSession =  async ( req, res) => {
             line_items: lineItems,
             mode: "payment",
             metadata: {
-                orderData: JSON.stringify(orderData)
+                orderData: JSON.stringify(orderData),
             
             },
             success_url: "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
