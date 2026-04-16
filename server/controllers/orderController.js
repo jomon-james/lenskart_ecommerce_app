@@ -109,7 +109,7 @@ const updateOrderStatus = async (req, res) => {
       `;
       
       await sendEmail(
-        "jomonjames118@gmail.com",
+        user.email,
         "Order Status Update",
         `${message}`
       );
@@ -148,7 +148,10 @@ const confirmOrder = async (req, res) => {
     const { sessionId } = req.body;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     const orderData = JSON.parse(session.metadata.orderData);
-    const newOrder = new Order(orderData);
+    const newOrder = new Order({
+      ...orderData,
+      paymentStatus: "Paid",
+    });
     await newOrder.save();
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
