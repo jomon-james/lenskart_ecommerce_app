@@ -146,7 +146,7 @@ const getUserOrders = async (req, res) => {
 const confirmOrder = async (req, res) => {
   try {
     const { sessionId } = req.body;
-    const session = await stripe.checkout.sessions.retrieve(sissionId);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
     const orderData = JSON.parse(session.metadata.orderData);
     const newOrder = new Order(orderData);
     await newOrder.save();
