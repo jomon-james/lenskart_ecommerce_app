@@ -151,7 +151,18 @@ const confirmOrder = async (req, res) => {
     const newOrder = new Order(orderData);
     await newOrder.save();
 
-    res.json({ message: "order saved successfully" });
+    const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
+
+    const message =`Your order has been placed successfully!\nOrder ID: ${newOrder._id}\nItems:\n${itemsList}\n Total Amount: ${newOrder.totalAmount}\n
+    Thank you for shopping with lenskart!`;
+
+    await sendEmail(
+      "jomonjames118@gmail.com",
+      "Order Confirmation",
+      message
+    );
+
+    res.json({ message: "order saved successfully ans email sent" });
 
   } catch (error) {
     console.error(error);
