@@ -9,7 +9,10 @@ function Success() {
 
     const saveOrder = async () => {
       try {
-        const orderData = JSON.parse(localStorage.getItem("pendingOrder")) || JSON.parse(sessionStorage.getItem("pendingOrderBackup"));
+        const localData = localStorage.getItem("pendingOrder");
+        const sessionData = sessionStorage.getItem("pendingOrderBackup");
+
+        const orderData = localData ? JSON.parse(localData) : sessionData ? JSON.parse(sessionData) : null;
         console.log("Saving order:", orderData);
 
         if (!orderData) {
@@ -36,7 +39,6 @@ function Success() {
       setTimeout(() => {
             saveOrder();
           }, 1000);
-          saveOrder();
   }, []);
 
   return (
