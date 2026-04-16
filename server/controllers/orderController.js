@@ -72,7 +72,7 @@ const createCheckoutSession =  async ( req, res) => {
                 orderData: JSON.stringify(orderData)
             
             },
-            success_url: "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app/success",
+            success_url: "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
             cancel_url: "https://lenskart-ecommerce-app.onrender.com/cancel",
         });
 
