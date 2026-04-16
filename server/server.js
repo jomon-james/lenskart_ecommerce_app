@@ -16,7 +16,8 @@ const orderRoutes = require("./routes/orderRoutes");
 const app = express();
 
 app.use(cors({
-  origin: ["https://lenskart-ecommerce-app.vercel.app","lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app"],
+  origin: ["https://lenskart-ecommerce-app.vercel.app",
+            "https://lenskart-ecommerce-app-git-main-jomon-james-projects.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
