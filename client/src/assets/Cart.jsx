@@ -35,10 +35,13 @@ function Cart() {
     }
   };
 
-  const total = cart.reduce(
-    (acc, item) => acc + item.price * item.qty,
-    0
-  );
+  const subtotal = cart.reduce(
+  (acc, item) => acc + item.price * item.qty,
+  0
+    );
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
 
   const handleCheckout = async () => {
     try {
@@ -91,7 +94,12 @@ function Cart() {
         ))
       )}
 
-      <h3>Total: ₹{total}</h3>
+      <div className="price-summary">
+      <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
+      <p>GST (18%): ₹{gst.toFixed(2)}</p>
+      <h3>Total: ₹{total.toFixed(2)}</h3>
+      </div>
+      
       <div>
         <button className="checkout-btn" onClick={handleCheckout}>checkout </button>
       </div>

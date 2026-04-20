@@ -40,3 +40,22 @@
 .checkout-btn:hover {
   background-color: #1327a9;
 }
+
+.price-summary {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 2px solid #ddd;
+  max-width: 300px;
+}
+
+.price-summary p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.price-summary h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #000;
+}

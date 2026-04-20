@@ -17,13 +17,23 @@ const placeOrder = async (req, res) => {
       items,
       address,
       paymentMethod,
-      totalAmount,
+      subtotal: subtotal,
+      gstAmount: gst,
+      totalAmount:total,
       paymentStatus: paymentMethod === "COD" ? "Pending" : "Paid",
     });
 
+      const subtotal = items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+      );
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
+
     await newOrder.save();
     const user = await User.findById(userId);
-    const pdfBuffer = await generateInvoice();
+    const pdfBuffer = await generateInvoice(newOrder);
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
 
@@ -151,12 +161,24 @@ const confirmOrder = async (req, res) => {
     const { sessionId } = req.body;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     const orderData = JSON.parse(session.metadata.orderData);
+
+    const subtotal = orderData.items.reduce(
+  (acc, item) => acc + item.price * item.quantity,
+  0
+    );
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
+
     const newOrder = new Order({
       ...orderData,
+      subtotal: subtotal,
+      gstAmount: gst,
+      totalAmount: total,
       paymentStatus: "Paid",
     });
     await newOrder.save();
-    const pdfBuffer = await generateInvoice();
+    const pdfBuffer = await generateInvoice(newOrder);
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
 

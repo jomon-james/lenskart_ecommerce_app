@@ -37,6 +37,8 @@ const orderSchema = new mongoose.Schema({
     },
 
     totalAmount: Number,
+    subtotal: Number,
+    gstAmount: Number,
 
     status: {
         type: String,

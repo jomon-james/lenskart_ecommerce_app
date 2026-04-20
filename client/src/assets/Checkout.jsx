@@ -34,9 +34,12 @@ function Checkout() {
 
     if (!product) return <h2>No product selected</h2>;
 
-    const total = product.reduce((acc, item) => {
-        return acc + item.price * item.qty;
-    },0);
+    const subtotal = product.reduce((acc, item) => {
+    return acc + item.price * item.qty;
+    }, 0);
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
 
     const handleChange = (e) => {
         setAddress({ ...address, [e.target.name]: e.target.value });
@@ -141,7 +144,9 @@ function Checkout() {
 
                 </div>
                ))}
-                <h3 className="total">Total: {total}</h3>
+                <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
+                <p>GST (18%): ₹{gst.toFixed(2)}</p>
+                <h3 className="total">Total: ₹{total.toFixed(2)}</h3>
 
             </div>
 
