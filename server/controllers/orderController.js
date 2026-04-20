@@ -5,6 +5,7 @@ const sendEmail = require("../externals/sendEmail");
 const User = require("../models/User");
 const Stripe = require("stripe");
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const { generateInvoice } = require("../externals/generateInvoice");
 
 
 const placeOrder = async (req, res) => {
@@ -22,6 +23,7 @@ const placeOrder = async (req, res) => {
 
     await newOrder.save();
     const user = await User.findById(userId);
+    const pdfBuffer = await generateInvoice();
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
 
@@ -30,7 +32,8 @@ const placeOrder = async (req, res) => {
     await sendEmail(
       user.email, 
       "Order Confirmation",
-      message
+      message,
+      pdfBuffer
     );
    
     await Cart.findOneAndUpdate(
@@ -153,6 +156,7 @@ const confirmOrder = async (req, res) => {
       paymentStatus: "Paid",
     });
     await newOrder.save();
+    const pdfBuffer = await generateInvoice();
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');
 
@@ -163,7 +167,8 @@ const confirmOrder = async (req, res) => {
     await sendEmail(
       user.email,
       "Order Confirmation",
-      message
+      message,
+      pdfBuffer
     );
 
     res.json({ message: "order saved successfully ans email sent" });
