@@ -12,6 +12,14 @@ const placeOrder = async (req, res) => {
   try {
     const { userId, items, address, paymentMethod, totalAmount } = req.body;
 
+    const subtotal = items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+      );
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
+
     const newOrder = new Order({
       userId,
       items,
@@ -23,13 +31,7 @@ const placeOrder = async (req, res) => {
       paymentStatus: paymentMethod === "COD" ? "Pending" : "Paid",
     });
 
-      const subtotal = items.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-      );
-
-    const gst = subtotal * 0.18;
-    const total = subtotal + gst;
+      
 
     await newOrder.save();
     const user = await User.findById(userId);
@@ -72,7 +74,7 @@ const createCheckoutSession =  async ( req, res) => {
                 product_data: {
                     name: item.name,
                 },
-                unit_amount: item.price * 100,
+                unit_amount: Math.round(priceWithGST * 100),
             },
             quantity: item.quantity,
         }));
