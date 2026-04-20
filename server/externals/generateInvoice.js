@@ -42,8 +42,8 @@ export const generateInvoice = (order) => {
     order.items.forEach((item) => {
       doc.text(item.name, 40, y);
       doc.text(item.quantity, 250, y);
-      doc.text(`₹${item.price}`, 300, y);
-      doc.text(`₹${item.price * item.quantity}`, 400, y);
+      doc.text(`Rs.${item.price}`, 300, y);
+      doc.text(`Rs.${item.price * item.quantity}`, 400, y);
 
       y += 25;
     });
@@ -56,13 +56,13 @@ export const generateInvoice = (order) => {
     y += 20;
 
     // 💰 SUMMARY
-    doc.text(`Subtotal: ₹${order.subtotal.toFixed(2)}`, 350, y);
+    doc.text(`Subtotal: Rs.${order.subtotal.toFixed(2)}`, 350, y);
     y += 20;
 
-    doc.text(`GST (18%): ₹${order.gstAmount.toFixed(2)}`, 350, y);
+    doc.text(`GST (18%): Rs.${order.gstAmount.toFixed(2)}`, 350, y);
     y += 20;
 
-    doc.fontSize(14).text(`Total: ₹${order.totalAmount.toFixed(2)}`, 350, y);
+    doc.fontSize(14).text(`Total: Rs.${order.totalAmount.toFixed(2)}`, 350, y);
 
     doc.end();
   });

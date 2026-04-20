@@ -68,7 +68,10 @@ const placeOrder = async (req, res) => {
 const createCheckoutSession =  async ( req, res) => {
     try {
         const { items, orderData } = req.body;
-        const lineItems = items.map(item => ({
+        const lineItems = items.map(item => {
+        const priceWithGST = item.price * 1.18;
+
+        return {
             price_data: {
                 currency: "inr",
                 product_data: {
@@ -77,7 +80,8 @@ const createCheckoutSession =  async ( req, res) => {
                 unit_amount: Math.round(priceWithGST * 100),
             },
             quantity: item.quantity,
-        }));
+            };
+        });
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
