@@ -59,7 +59,7 @@ function SalesDashboard() {
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="date" />
             <YAxis />
-            <ToolTip />
+            <Tooltip />
             <Line type="monotone" dataKey="revenue" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
