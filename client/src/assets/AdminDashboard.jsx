@@ -19,6 +19,7 @@ function AdminDashboard() {
                     <span onClick={() => navigate("/admin/manage-products")}>Manage Products</span>
                     <span onClick={() => navigate("/admin/users")}>Manage Users</span>
                     <span onClick={() => navigate("/admin/orders")}>Manage Orders</span>
+                    <span onClick={() => navigate("/admin/sales")}>Sales Dashboard</span>
                     <span className="logout" onClick={handleLogout}>Logout</span>
                 </div>
             

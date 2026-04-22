@@ -115,15 +115,23 @@ const updateOrderStatus = async (req, res) => {
 
       const user = await User.findById(updatedOrder.userId);
 
-      const itemsList = updatedOrder.items.map(item => `${item.name} | Qty: ${item.quantity} | Price: ${item.price}`).join('\n');
+      const itemsList = updatedOrder.items.map(item => {
+      const priceWithGST = item.price * 1.18;
+
+      return `${item.name} | Qty: ${item.quantity} | Price: Rs. ${priceWithGST.toFixed(2)}`;
+      }).join('\n');
 
       let message = `
       Order ID: ${updatedOrder._id}
-      status: ${status}
-      
+      Status: ${status}
+
       Products:
       ${itemsList}
-      
+
+      Subtotal: Rs. ${updatedOrder.subtotal.toFixed(2)}
+      GST (18%): Rs. ${updatedOrder.gstAmount.toFixed(2)}
+      Total: Rs. ${updatedOrder.totalAmount.toFixed(2)}
+
       Thank you for shopping with lenskart
       `;
       

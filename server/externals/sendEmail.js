@@ -14,7 +14,7 @@ const sendEmail = async (to, subject, text, pdfBuffer) => {
           <p>${text.replace(/\n/g, "<br>")}</p>
         </div>`,
 
-      // ✅ ADD THIS BLOCK ONLY
+      
       attachments: pdfBuffer
         ? [
             {

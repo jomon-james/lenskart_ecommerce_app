@@ -8,22 +8,22 @@ export const generateInvoice = (order) => {
     doc.on("data", (chunk) => buffers.push(chunk));
     doc.on("end", () => resolve(Buffer.concat(buffers)));
 
-    // 🧾 TITLE
+    
     doc.fontSize(18).text("GST INVOICE", { align: "center" });
     doc.moveDown();
 
-    // 📄 ORDER INFO
+   
     doc.fontSize(12);
     doc.text(`Order ID: ${order._id}`);
     doc.text(`Date: ${new Date(order.createdAt).toLocaleDateString()}`);
     doc.moveDown();
 
-    // 📍 CUSTOMER
+    
     doc.text(`Customer: ${order.address.fullName}`);
     doc.text(`City: ${order.address.city}`);
     doc.moveDown();
 
-    // 📊 TABLE HEADER
+    
     const tableTop = 150;
 
     doc.text("Item", 40, tableTop);
@@ -31,12 +31,12 @@ export const generateInvoice = (order) => {
     doc.text("Price", 300, tableTop);
     doc.text("Total", 400, tableTop);
 
-    // LINE BELOW HEADER
+    
     doc.moveTo(40, tableTop + 15)
        .lineTo(550, tableTop + 15)
        .stroke();
 
-    // 📦 ITEMS
+    
     let y = tableTop + 30;
 
     order.items.forEach((item) => {
@@ -48,14 +48,14 @@ export const generateInvoice = (order) => {
       y += 25;
     });
 
-    // LINE AFTER ITEMS
+    
     doc.moveTo(40, y)
        .lineTo(550, y)
        .stroke();
 
     y += 20;
 
-    // 💰 SUMMARY
+    
     doc.text(`Subtotal: Rs.${order.subtotal.toFixed(2)}`, 350, y);
     y += 20;
 

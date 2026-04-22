@@ -20,6 +20,7 @@ import Checkout  from "./assets/Checkout";
 import MyOrders from "./assets/MyOrders";
 import AdminOrders from "./assets/AdminOrders";
 import Success from "./assets/Success";
+import SalesDashboard from "./assets/SalesDashboard";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/admin/sales" element={<SalesDashboard />} />
         
       </Routes>
     </Router>
