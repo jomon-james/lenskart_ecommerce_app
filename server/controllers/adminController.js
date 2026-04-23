@@ -8,7 +8,8 @@ const getDashboardStats = async (req, res) => {
 
     const totalOrders = await Order.countDocuments();
 
-    const orders = (await Order.find({ paymentStatus: "Paid" })).sort({ createdAt: 1 });
+    const orders = (await Order.find({ paymentStatus: "Paid" }))
+      .sort({ createdAt: 1 });
 
     const totalRevenue = orders.reduce(
       (acc, order) => acc + order.totalAmount,
