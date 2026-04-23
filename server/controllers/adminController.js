@@ -8,7 +8,7 @@ const getDashboardStats = async (req, res) => {
 
     const totalOrders = await Order.countDocuments();
 
-    const orders = (await Order.find({ paymentStatus: "Paid" }))
+    const orders = await Order.find({ paymentStatus: "Paid" })
       .sort({ createdAt: 1 });
 
     const totalRevenue = orders.reduce(
@@ -27,7 +27,7 @@ const getDashboardStats = async (req, res) => {
       salesMap[date] += order.totalAmount;
     });
 
-    const salesData = Object.keys(salesMap).map(date => ({
+    const salesData = Object.keys(salesMap).sort((a, b) => new Date(a) - new Date(b)).map(date => ({
       date,
       revenue: salesMap[date],
     }));
