@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 
 function SalesDashboard() {
   const [stats, setStats] = useState({
@@ -8,6 +9,8 @@ function SalesDashboard() {
     totalOrders: 0,
     totalRevenue: 0,
     totalSales: 0,
+    salesData: [],
+    productData: [],
   });
 
   useEffect(() => {
@@ -24,6 +27,8 @@ function SalesDashboard() {
       console.log(error);
     }
   };
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   return (
     <div style={{ padding: "20px" }}>
@@ -64,6 +69,30 @@ function SalesDashboard() {
           </LineChart>
         </ResponsiveContainer>
       </div>
+
+      <h3 style={{ marginTop: "40px" }}>Revenue by Product</h3>
+      <div style={{ width: "100%", height: "300px", marginTop: "20px" }}>
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie
+              data={stats.productData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={100}
+              label
+            >
+              {stats.productData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+
     </div>
   );
 }

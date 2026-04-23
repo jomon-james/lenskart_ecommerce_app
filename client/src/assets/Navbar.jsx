@@ -1,8 +1,18 @@
 import React from 'react';
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
+        alert("Logout Successful");
+        navigate("/login");
+    }
+
     return (
         <>
         <div className="top-bar">
@@ -29,7 +39,7 @@ function Navbar() {
 
         <div className="nav-links">
             <Link to="/my-orders">Track Order</Link>
-            <Link to="#">Sign In & Sign Up</Link>
+            <Link to="#" onClick={handleLogout}>Logout</Link>
             <Link to="#"><img src="./images/love.png" alt="Wishlist icon" className="icon"/> Wishlist</Link>
             <Link to="/cart"><img src="./images/shopping-bag.png" alt="cart icon" className="icon"/>Cart</Link>
         </div>

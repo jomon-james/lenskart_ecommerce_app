@@ -32,12 +32,28 @@ const getDashboardStats = async (req, res) => {
       revenue: salesMap[date],
     }));
 
+    const productMap = {};
+    orders.forEach(order => {
+      order.items.forEach(item => {
+        if (!productMap[item.name]) {
+          productMap[item.name] = 0;
+        }
+        productMap[item.name] += item.price * item.quantity;
+        });
+      });
+
+      const productData = Object.keys(productMap).map(name => ({
+        name,
+        value: productMap[name],
+      }));
+
     res.json({
       totalProducts,
       totalOrders,
       totalRevenue,
       totalSales,
       salesData,
+      productData,
     });
 
   } catch (error) {

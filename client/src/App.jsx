@@ -4,7 +4,6 @@ import Signup from "./assets/Signup";
 import Navbar from "./assets/Navbar";
 import Home from "./assets/Home";
 import "./App.css";
-import NewArrivals from "./assets/NewArrivals";
 import SunGlasses from "./assets/SunGlasses";
 import EyeGlasses from "./assets/EyeGlasses";
 import ContactLenses from "./assets/ContactLenses";
@@ -41,7 +40,6 @@ function App() {
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
 
-        <Route path="/new-arrivals" element={<><Navbar /><NewArrivals /></>} />
         <Route path="/sunglasses" element={<><Navbar /><SunGlasses /></>} />
         <Route path="/eyeglasses" element={<><Navbar /><EyeGlasses /></>} />
         <Route path="/contact-lenses" element={<><Navbar /><ContactLenses /></>} />
