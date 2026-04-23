@@ -53,7 +53,7 @@ function SalesDashboard() {
 
       </div>
       <h3 style={{ marginTop: "40px" }}>Revenue Over Time</h3>
-      <div style={{ width: "100%", height: 300, marginTop: "20px" }}>
+      <div style={{ width: "100%", height: "300px", marginTop: "20px" }}>
         <ResponsiveContainer>
           <LineChart data={stats.salesData}>
             <CartesianGrid stroke="#ccc" />
