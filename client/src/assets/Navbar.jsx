@@ -46,7 +46,6 @@ function Navbar() {
     </nav>
 
     <div className="menu">
-        <Link to="/new-arrivals">NEW ARRIVALS</Link>
         <Link to="/eyeglasses">EYEGLASSES</Link>
         <Link to="/sunglasses">SUNGLASSES</Link>
         <Link to="/contact-lenses">CONTACTS</Link>
