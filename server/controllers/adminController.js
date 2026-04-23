@@ -32,6 +32,10 @@ const getDashboardStats = async (req, res) => {
       revenue: salesMap[date],
     }));
 
+    const totalGST = orders.reduce((acc, order) => acc + (order.gstAmount || 0), 0);
+    const cgst = totalGST / 2;
+    const sgst = totalGST / 2;
+
     const productMap = {};
     orders.forEach(order => {
       order.items.forEach(item => {
@@ -54,6 +58,10 @@ const getDashboardStats = async (req, res) => {
       totalSales,
       salesData,
       productData,
+      totalGST,
+      cgst,
+      sgst
+
     });
 
   } catch (error) {

@@ -28,7 +28,7 @@ function SalesDashboard() {
     }
   };
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A", "#33AA99", "#FF6633", "#66FF33", "#3366FF", "#FF33CC"];
 
   return (
     <div style={{ padding: "20px" }}>
@@ -54,6 +54,21 @@ function SalesDashboard() {
         <div style={cardStyle}>
           <h3>Sales Done</h3>
           <p>{stats.totalSales}</p>
+        </div>
+
+        <div style={cardStyle}>
+          <h3>GST Collected</h3>
+          <p>Rs. {stats.totalGST.toFixed(2)}</p>
+        </div>
+
+        <div style={cardStyle}>
+          <h3>CGST</h3>
+          <p>Rs. {stats.cgst.toFixed(2)}</p>
+        </div>
+
+        <div style={cardStyle}>
+          <h3>SGST</h3>
+          <p>Rs. {stats.sgst.toFixed(2)}</p>
         </div>
 
       </div>
