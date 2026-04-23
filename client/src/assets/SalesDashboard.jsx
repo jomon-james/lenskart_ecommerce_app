@@ -11,6 +11,9 @@ function SalesDashboard() {
     totalSales: 0,
     salesData: [],
     productData: [],
+    totalGST: 0,
+    cgst: 0,
+    sgst: 0
   });
 
   useEffect(() => {
