@@ -20,6 +20,7 @@ import MyOrders from "./assets/MyOrders";
 import AdminOrders from "./assets/AdminOrders";
 import Success from "./assets/Success";
 import SalesDashboard from "./assets/SalesDashboard";
+import UserLayout from "./assets/UserLayout";
 
 
 function App() {
@@ -40,15 +41,18 @@ function App() {
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
 
-        <Route path="/sunglasses" element={<><Navbar /><SunGlasses /></>} />
-        <Route path="/eyeglasses" element={<><Navbar /><EyeGlasses /></>} />
-        <Route path="/contact-lenses" element={<><Navbar /><ContactLenses /></>} />
-        <Route path="/accessories" element={<><Navbar /><Accessories /></>} />
+      <Route element={<UserLayout />}>
+        <Route path="/sunglasses" element={<><SunGlasses /></>} />
+        <Route path="/eyeglasses" element={<><EyeGlasses /></>} />
+        <Route path="/contact-lenses" element={<><ContactLenses /></>} />
+        <Route path="/accessories" element={<><Accessories /></>} />
         <Route path="/product/:id" element={<><ProductDetails /></>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/success" element={<Success />} />
+      </Route>
+
         <Route path="/admin/sales" element={<SalesDashboard />} />
         
       </Routes>
