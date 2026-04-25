@@ -39,6 +39,7 @@ function App() {
         <Route path="/admin/manage-products" element={<ManageProducts />} />
         <Route path="/admin/users" element={<ManageUsers />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/sales" element={<SalesDashboard />} />
 
       <Route element={<UserLayout />}>
         <Route path="/home" element={<><Home /></>} />
@@ -48,13 +49,14 @@ function App() {
         <Route path="/accessories" element={<><Accessories /></>} />
         <Route path="/product/:id" element={<><ProductDetails /></>} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/my-orders" element={<MyOrders />} />
-        <Route path="/success" element={<Success />} />
+        
         <Route path="/search" element={<SearchResults />} />
       </Route>
 
-        <Route path="/admin/sales" element={<SalesDashboard />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/success" element={<Success />} />
+        
         
       </Routes>
     </Router>
