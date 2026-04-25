@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 function Navbar() {
     const navigate = useNavigate();
@@ -12,6 +14,8 @@ function Navbar() {
         alert("Logout Successful");
         navigate("/login");
     }
+
+    const [search, setSearch] = useState("");
 
     return (
         <>
@@ -34,7 +38,17 @@ function Navbar() {
         </div>
 
         <div className="search-box">
-            <input type="text" placeholder="What are you looking for?"/>
+            <input
+            type="text"
+            placeholder="What are you looking for?"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" && search.trim() !== "") {
+                navigate(`/search?q=${search}`);
+                }
+            }}
+            />
         </div>
 
         <div className="nav-links">
