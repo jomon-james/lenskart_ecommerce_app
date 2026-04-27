@@ -37,19 +37,38 @@ const getDashboardStats = async (req, res) => {
     const sgst = totalGST / 2;
 
     const productMap = {};
+
     orders.forEach(order => {
       order.items.forEach(item => {
         if (!productMap[item.name]) {
           productMap[item.name] = 0;
         }
         productMap[item.name] += item.price * item.quantity;
-        });
       });
+    });
 
-      const productData = Object.keys(productMap).map(name => ({
-        name,
-        value: productMap[name],
-      }));
+   
+    let productArray = Object.keys(productMap).map(name => ({
+      name,
+      value: productMap[name],
+    }));
+    
+    productArray.sort((a, b) => b.value - a.value);
+    
+    const top5 = productArray.slice(0, 5);
+
+    const othersTotal = productArray
+      .slice(5)
+      .reduce((acc, item) => acc + item.value, 0);
+
+    if (othersTotal > 0) {
+      top5.push({
+        name: "Others",
+        value: othersTotal,
+      });
+    }
+
+    const productData = top5;
 
     res.json({
       totalProducts,
