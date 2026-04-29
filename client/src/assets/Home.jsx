@@ -1,5 +1,4 @@
 import Carousel from "./Carousel";
-import "./Home.css";
 
 function Home() {
     return (
