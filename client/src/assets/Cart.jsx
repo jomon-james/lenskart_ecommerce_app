@@ -76,7 +76,7 @@ function Cart() {
         cart.map(item => (
           <div key={item.productId} className="cart-item">
             <img 
-              src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} 
+              src={item.image}
               alt={item.name}  
               width="100" 
             />

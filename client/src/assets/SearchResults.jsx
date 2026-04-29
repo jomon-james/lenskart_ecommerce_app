@@ -44,7 +44,7 @@ function SearchResults() {
               onClick={() => navigate(`/product/${p._id}`)}
             >
               <img
-                src={`https://lenskart-ecommerce-app.onrender.com/uploads/${p.image}`}
+                src={p.image}
                 alt={p.name}
                 width="150"
               />

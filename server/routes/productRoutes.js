@@ -2,21 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Products");
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+const cloudinary = require("../config/cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      Date.now() + path.extname(file.originalname)
-    );
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "lenskart-products",
+    allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
   },
 });
+
+
 
 const upload = multer({ storage: storage });
 
@@ -30,7 +28,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
       category: req.body.category,
       price: req.body.price,
       description: req.body.description,
-      image: req.file.filename,
+      image: req.file ? req.file.path : ""
     });
 
     await newProduct.save();
@@ -88,18 +86,11 @@ router.delete("/delete/:id", async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    const imagePath = "uploads/" + product.image;
-
     
-    fs.unlink(imagePath, (err) => {
-      if (err) {
-        console.log("Error deleting image:", err);
-      }
-    });
 
     await Product.findByIdAndDelete(req.params.id);
 
-    res.json({ message: "Product and image deleted successfully" });
+    res.json({ message: "Product deleted successfully" });
 
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -116,26 +107,13 @@ router.put("/:id",upload.single("image"), async (req, res) => {
     };
 
     if (req.file) {
-
-  const product = await Product.findById(req.params.id);
-
-  if (product.image) {
-    const oldImagePath = "uploads/" + product.image;
-
-    fs.unlink(oldImagePath, (err) => {
-      if (err) {
-        console.log("Error deleting old image:", err);
-      }
-    });
-  }
-
-  updateData.image = req.file.filename;
+  updateData.image = req.file.path;
 }
 
   const updatedProduct = await Product.findByIdAndUpdate(
     req.params.id,
     updateData,
-    {new: true}
+    { returnDocument: "after" }
   );
 
   res.json(updatedProduct);

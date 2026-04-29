@@ -48,7 +48,7 @@ function ProductDetails() {
     return (
         <div className="product-details-container">
             <div className="product-left">
-                <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${product.image}`} />
+                <img src={product.image} />
             </div>
             <div className="product-right">
                 <h2 className="product-title">{product.name}</h2>

@@ -55,7 +55,7 @@ function ManageProducts() {
 
                                     <td>
                                         <img
-                                            src={`https://lenskart-ecommerce-app.onrender.com/uploads/${product.image}`}
+                                            src={product.image}
                                             alt={product.name}
                                             style={{ width: "100px" }}
                                         />

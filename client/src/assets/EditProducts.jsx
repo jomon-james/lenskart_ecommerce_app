@@ -109,7 +109,7 @@ function EditProducts({ editProduct, setEditProduct, fetchProducts }) {
                             src={
                                 previewImage
                                     ? previewImage
-                                    : `https://lenskart-ecommerce-app.onrender.com/uploads/${editProduct.image}`
+                                    : editProduct.image
                             }
                             alt="product"
                             style={{ width: "120px", marginBottom: "10px", borderRadius: "5px" }}

@@ -135,7 +135,7 @@ function Checkout() {
 
                 {product.map((item, index) => (
                 <div className="checkout-product" key={index}>
-                    <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} />
+                    <img src={item.image} />
                     <div>
                         <h3>{item.name}</h3>
                         <p>{item.price}</p>

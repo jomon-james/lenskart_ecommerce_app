@@ -20,7 +20,7 @@ function Accessories() {
             {products.map((item) => (  
             <Link to={`/product/${item._id}`} key={item._id} className="product-link">
             <div className="product-card">
-                <img src={`https://lenskart-ecommerce-app.onrender.com/uploads/${item.image}`} alt={"item.name"} />
+                <img src={item.image} alt={item.name} />
                 <h3>{item.name}</h3>
                 <p>{item.price}</p>
                 
