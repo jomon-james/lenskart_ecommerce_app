@@ -192,6 +192,11 @@ const confirmOrder = async (req, res) => {
       paymentStatus: "Paid",
     });
     await newOrder.save();
+    
+    await Cart.findOneAndUpdate(
+      { userId: newOrder.userId },
+      { items: [] }
+    );
     const pdfBuffer = await generateInvoice(newOrder);
 
     const itemsList = newOrder.items.map(item => `${item.name} (Qty: ${item.quantity}) \nPrice ${item.price}`).join('\n');

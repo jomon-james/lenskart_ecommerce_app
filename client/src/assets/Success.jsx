@@ -4,9 +4,13 @@ import { useLocation } from "react-router-dom";
 
 function Success() {
       const location = useLocation();
+      const hasSaved = useRef(false);
      
     useEffect(() => {
       
+      if (hasSaved.current) return;
+      hasSaved.current = true;
+
     const saveOrder = async () => {
       try {
         const params = new URLSearchParams(location.search);
@@ -21,6 +25,14 @@ function Success() {
         console.log("Order confirmation response:", res.data);
 
        alert("Payment successful & Order placed!");
+
+       localStorage.removeItem("checkoutItems");
+       localStorage.removeItem("checkoutSource");
+        localStorage.removeItem("cart");
+        localStorage.removeItem("buyNow");
+        localStorage.removeItem("pendingOrder");
+        sessionStorage.removeItem("pendingOrderBackup");
+
 
       } catch (error) {
         console.error(error);
