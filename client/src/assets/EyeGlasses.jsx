@@ -11,6 +11,7 @@ function EyeGlasses() {
     const [wishlist, setWishlist] = useState([]);
 
     const user = JSON.parse(localStorage.getItem("user"));
+const userId = user?.id;
 
 
 
@@ -33,7 +34,7 @@ function EyeGlasses() {
         if(user){
 
             axios
-            .get(`https://lenskart-ecommerce-app.onrender.com/api/wishlist/${user.user.id}`)
+            .get(`https://lenskart-ecommerce-app.onrender.com/api/wishlist/${userId}`)
             .then((res) => {
 
                 setWishlist(
@@ -68,7 +69,7 @@ function EyeGlasses() {
                 await axios.post(
                     "https://lenskart-ecommerce-app.onrender.com/api/wishlist/remove",
                     {
-                        userId: user.user.id,
+                        userId,
                         productId,
                     }
                 );
@@ -86,7 +87,7 @@ function EyeGlasses() {
                 await axios.post(
                     "https://lenskart-ecommerce-app.onrender.com/api/wishlist/add",
                     {
-                        userId: user.user.id,
+                       userId,
                         productId,
                     }
                 );
