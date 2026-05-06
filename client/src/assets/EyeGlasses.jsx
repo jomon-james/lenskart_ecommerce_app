@@ -9,28 +9,48 @@ function EyeGlasses() {
 
     const [products, setProducts] = useState([]);
     const [wishlist, setWishlist] = useState([]);
+
     const user = JSON.parse(localStorage.getItem("user"));
 
 
+
+    // FETCH PRODUCTS
     useEffect(() => {
-        axios.get("https://lenskart-ecommerce-app.onrender.com/api/products?category=eyeglasses")
+
+        axios
+        .get("https://lenskart-ecommerce-app.onrender.com/api/products?category=eyeglasses")
         .then((res) => setProducts(res.data))
         .catch((err) => console.log(err));
-    },[]);
 
+    }, []);
+
+
+
+
+    // FETCH WISHLIST
     useEffect(() => {
 
         if(user){
 
             axios
-            .get(`https://lenskart-ecommerce-app.onrender.com/api/wishlist/${user._id}`)
+            .get(`https://lenskart-ecommerce-app.onrender.com/api/wishlist/${user.user.id}`)
             .then((res) => {
-                setWishlist(res.data.map(item => item._id));
+
+                setWishlist(
+                    res.data.map(item => item._id)
+                );
+
             })
             .catch((err) => console.log(err));
         }
-        }, []);
 
+    }, []);
+
+
+
+
+
+    // ADD / REMOVE WISHLIST
     const toggleWishlist = async (productId) => {
 
         if(!user){
@@ -42,12 +62,13 @@ function EyeGlasses() {
 
             const isWishlisted = wishlist.includes(productId);
 
+            // REMOVE
             if(isWishlisted){
 
                 await axios.post(
                     "https://lenskart-ecommerce-app.onrender.com/api/wishlist/remove",
                     {
-                        userId: user._id,
+                        userId: user.user.id,
                         productId,
                     }
                 );
@@ -56,63 +77,87 @@ function EyeGlasses() {
                     wishlist.filter(id => id !== productId)
                 );
 
-            } else {
+            } 
+            
+            
+            // ADD
+            else {
 
                 await axios.post(
                     "https://lenskart-ecommerce-app.onrender.com/api/wishlist/add",
                     {
-                        userId: user._id,
+                        userId: user.user.id,
                         productId,
                     }
                 );
 
-                setWishlist([...wishlist, productId]);
+                setWishlist([
+                    ...wishlist,
+                    productId
+                ]);
             }
 
         } catch(error){
+
             console.log(error);
         }
     };
 
+
+
+
+
+
     return (
     <>
+    
         <div className="products-container">
 
             {products.map((item) => (  
 
-            <div className="product-wrapper" key={item._id}>
+                <div className="product-wrapper" key={item._id}>
 
-            <Link to={`/product/${item._id}`} className="product-link">
+                    <Link
+                        to={`/product/${item._id}`}
+                        className="product-link"
+                    >
 
-            <div className="product-card">
+                        <div className="product-card">
 
-                <img src={item.image} alt={item.name} />
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                            />
 
-                <h3>{item.name}</h3>
+                            <h3>{item.name}</h3>
 
-                <p>₹{item.price}</p>
+                            <p>₹{item.price}</p>
 
-            </div>
+                        </div>
 
-            </Link>
+                    </Link>
 
 
-            <div
-                className="wishlist-icon"
-                onClick={() => toggleWishlist(item._id)}
-            >
-                {
-                    wishlist.includes(item._id)
-                    ? <FaHeart />
-                    : <FaRegHeart />
-                }
-            </div>
+                    {/* WISHLIST ICON */}
+                    <div
+                        className="wishlist-icon"
+                        onClick={() => toggleWishlist(item._id)}
+                    >
 
-            </div>
+                        {
+                            wishlist.includes(item._id)
+                            ? <FaHeart />
+                            : <FaRegHeart />
+                        }
+
+                    </div>
+
+                </div>
             ))}
 
         </div>
-        </>
+
+    </>
     );
 }
 
