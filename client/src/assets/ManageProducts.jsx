@@ -3,6 +3,7 @@ import axios from "axios";
 import "./ManageProducts.css";
 import EditProducts from "./EditProducts";
 import DeleteProduct from "./DeleteProduct";
+import BackButton from "./BackButton";
 
 function ManageProducts() {
 
@@ -27,6 +28,7 @@ function ManageProducts() {
 
     return (
         <div className="manage-container">
+            <BackButton />
             <h2 className="manage-title">Manage Products</h2>
 
             {products.length === 0 ? (

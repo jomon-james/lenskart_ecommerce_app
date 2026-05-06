@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./EditUser.css";
+import BackButton from "./BackButton";
 
 function EditUser({ user, onUpdate, onClose }) {
 
@@ -21,6 +22,7 @@ function EditUser({ user, onUpdate, onClose }) {
     };
     return (
         <div className="edit-user-container">
+            <BackButton />
             <div className="modal-box">
 
             <h3>Edit User</h3>

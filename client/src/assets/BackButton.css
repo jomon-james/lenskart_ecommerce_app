@@ -1,13 +1,17 @@
 .back-button {
-    margin: 20px;
-    padding: 10px 20px;
-    background: rgb(54, 89, 205);
-    color: white;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 6px 12px;
     border: none;
+    background: rgb(54, 110, 174);
+    color: white;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    z-index: 1000;
     transition: 0.3s;
+
 }
 
 .back-button:hover {

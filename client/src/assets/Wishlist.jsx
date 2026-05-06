@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Wishlist.css";
 import { Link } from "react-router-dom";
+import BackButton from "./BackButton";
 
 function Wishlist() {
 
@@ -67,6 +68,7 @@ function Wishlist() {
     return (
 
         <div className="wishlist-container">
+            <BackButton />
 
             <h2>My Wishlist</h2>
 
