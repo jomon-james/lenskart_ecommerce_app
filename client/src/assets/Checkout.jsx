@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Checkout.css";
 import { loadStripe } from "@stripe/stripe-js";
-import BackButton from "./BackButton";
+
 
 
 function Checkout() {
@@ -131,7 +131,7 @@ function Checkout() {
 
     return (
         <div className="checkout-container">
-            <BackButton />
+            
             <div className="checkout-left">
                 <h2>Order Summary</h2>
 

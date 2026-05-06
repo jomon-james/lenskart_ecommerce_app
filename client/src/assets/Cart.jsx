@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
-import BackButton from "./BackButton";
+
 
 function Cart() {
 
@@ -69,7 +69,7 @@ function Cart() {
 
   return (
     <div className="cart-container">
-      <BackButton />
+      
       
       <h2>Your Cart</h2>
 

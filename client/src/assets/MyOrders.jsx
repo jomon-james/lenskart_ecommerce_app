@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyOrders.css";
-import BackButton from "./BackButton";
+
 
 function MyOrders() {
   const [orders, setOrders] = useState([]);
@@ -22,7 +22,7 @@ function MyOrders() {
 
   return (
     <div className="myorders-container">
-      <BackButton />
+      
   <h2 className="myorders-title">My Orders</h2>
 
   {orders.map((order) => (

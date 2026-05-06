@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ManageUsers.css";
 import DeleteUser from "./DeleteUser";
-import EditUser from "./EditUser";
-import BackButton from "./BackButton";
+
 
 function ManageUsers() {
 
@@ -33,7 +32,7 @@ function ManageUsers() {
 
     return (
         <div className="manage-users">
-            <BackButton />
+            
             <h2>Manage Users</h2>
 
             <table className="users-table">

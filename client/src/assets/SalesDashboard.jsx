@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { PieChart, Pie, Cell, Legend } from "recharts";
-import BackButton from "./BackButton";
+
 
 function SalesDashboard() {
   const [stats, setStats] = useState({
@@ -32,10 +32,10 @@ function SalesDashboard() {
     }
   };
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A", "#33AA99", "#FF6633", "#66FF33", "#3366FF", "#FF33CC"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A", "#1f4640", "#FF6633", "#66FF33", "#3366FF", "#FF33CC"];
 
   return (
-    <div style={{ padding: "20px" }}><BackButton />
+    <div style={{ padding: "20px" }}>
       <h2>Sales Dashboard</h2>
 
       <div style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
