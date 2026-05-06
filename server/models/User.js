@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({
   password: String,
 
   wishlist: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-  ],
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+  }
+],
 });
 
 module.exports = mongoose.model("User", userSchema);
