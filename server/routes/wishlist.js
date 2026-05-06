@@ -13,9 +13,19 @@ router.post("/add", async (req, res) => {
 
         const { userId, productId } = req.body;
 
+        console.log(req.body);
+
         const user = await User.findById(userId);
 
-        if (!user.wishlist.includes(productId)) {
+        if (!user.wishlist) {
+            user.wishlist = [];
+        }
+
+        const alreadyExists = user.wishlist.some(
+            item => item.toString() === productId
+        );
+
+        if (!alreadyExists) {
 
             user.wishlist.push(productId);
 
@@ -28,6 +38,8 @@ router.post("/add", async (req, res) => {
         });
 
     } catch (error) {
+
+        console.log(error);
 
         res.status(500).json({
             error: error.message,
