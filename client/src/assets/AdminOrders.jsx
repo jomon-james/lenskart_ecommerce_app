@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminOrders.css";
-import BackButton from "./BackButton";
+
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -46,7 +46,7 @@ function AdminOrders() {
 
   return (
     <div className="admin-orders-container">
-      <BackButton />
+      
   <h2 className="admin-orders-title">Manage Orders</h2>
 
   {orders.map((order) => (
