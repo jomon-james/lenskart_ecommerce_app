@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const wishlistRoutes = require("./routes/wishlist");
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/api",productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders",orderRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/wishlist", wishlistRoutes);
 
 app.listen(PORT, HOST, () => {
   console.log(`Server running on port ${PORT}`);
