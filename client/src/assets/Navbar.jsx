@@ -54,7 +54,7 @@ function Navbar() {
         <div className="nav-links">
             <Link to="/my-orders">Track Order</Link>
             <Link to="/login" onClick={handleLogout}>Logout</Link>
-            <Link to="#"><img src="/images/love.png" alt="Wishlist icon" className="icon"/> Wishlist</Link>
+            <Link to="/wishlist"><img src="/images/love.png" alt="Wishlist icon" className="icon"/> Wishlist</Link>
             <Link to="/cart"><img src="/images/shopping-bag.png" alt="cart icon" className="icon"/>Cart</Link>
         </div>
     </nav>

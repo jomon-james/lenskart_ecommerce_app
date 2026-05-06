@@ -11,11 +11,9 @@ function EyeGlasses() {
     const [wishlist, setWishlist] = useState([]);
 
     const user = JSON.parse(localStorage.getItem("user"));
-const userId = user?.id;
+    const userId = user?.id;
 
-
-
-    // FETCH PRODUCTS
+  
     useEffect(() => {
 
         axios
@@ -28,7 +26,7 @@ const userId = user?.id;
 
 
 
-    // FETCH WISHLIST
+   
     useEffect(() => {
 
         if(user){
@@ -51,7 +49,7 @@ const userId = user?.id;
 
 
 
-    // ADD / REMOVE WISHLIST
+    
     const toggleWishlist = async (productId) => {
 
         if(!user){
@@ -63,7 +61,7 @@ const userId = user?.id;
 
             const isWishlisted = wishlist.includes(productId);
 
-            // REMOVE
+            
             if(isWishlisted){
 
                 await axios.post(
@@ -81,7 +79,7 @@ const userId = user?.id;
             } 
             
             
-            // ADD
+           
             else {
 
                 await axios.post(
@@ -139,7 +137,7 @@ const userId = user?.id;
                     </Link>
 
 
-                    {/* WISHLIST ICON */}
+                    
                     <div
                         className="wishlist-icon"
                         onClick={() => toggleWishlist(item._id)}

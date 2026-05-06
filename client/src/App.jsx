@@ -22,6 +22,7 @@ import Success from "./assets/Success";
 import SalesDashboard from "./assets/SalesDashboard";
 import UserLayout from "./assets/UserLayout";
 import SearchResults from "./assets/SearchResults";
+import Wishlist from "./assets/Wishlist";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/accessories" element={<><Accessories /></>} />
         <Route path="/product/:id" element={<><ProductDetails /></>} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         
         <Route path="/search" element={<SearchResults />} />
       </Route>
