@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import "./AddProducts.css";
+import "./BackButton";
+import BackButton from "./BackButton";
 
 function AddProducts() {
   const [formData, setFormData] = useState({
@@ -51,6 +53,7 @@ function AddProducts() {
 
   return (
     <div className="add-products-container">
+      <BackButton />
       <h2 className="add-products-heading">Add a Product</h2>
 
       <form
