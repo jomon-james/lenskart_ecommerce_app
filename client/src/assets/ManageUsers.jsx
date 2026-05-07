@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ManageUsers.css";
 import DeleteUser from "./DeleteUser";
-
+import EditUser from "./EditUser";
 
 function ManageUsers() {
 
