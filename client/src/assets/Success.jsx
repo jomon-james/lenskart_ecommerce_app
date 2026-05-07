@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Success() {
       const location = useLocation();
+      const navigate = useNavigate();
       const hasSaved = useRef(false);
      
     useEffect(() => {
@@ -25,6 +26,9 @@ function Success() {
         console.log("Order confirmation response:", res.data);
 
        alert("Payment successful & Order placed!");
+       setTimeout(() => {
+        navigate("/home");
+        }, 2000);
 
        localStorage.removeItem("checkoutItems");
        localStorage.removeItem("checkoutSource");
